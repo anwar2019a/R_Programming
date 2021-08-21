@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R Programming"
-author: "Sana Rasheed"
-date: "May 14, 2020"
+author: "Anwar Ahmed"
+date: "August , 2021"
 output: html_document
 ---
 
@@ -24,26 +24,31 @@ output: html_document
 
 ```{r }
 #### Start solution ####
-```
+x <- c("a", "n", "w", "a", "r")
 
 
-```{r }
 
-```
-
-
-```{r }
 
 ```
 
 
 ```{r }
-
+z <- c(x, "Anwar")
 ```
 
 
 ```{r }
+g<-100:120
+```
 
+
+```{r }
+m<-matrix(2:10,nrow=3, ncol=3)
+```
+
+
+```{r }
+name <- "John"
 ```
 
 
@@ -60,16 +65,18 @@ output: html_document
 
 ```{r }
 #### Start solution ####
+emp_status<-factor(c("Employed","Unemployed","Self-Employed"))
 ```
 
 
 ```{r }
+table(emp_status)
 
 ```
 
 
 ```{r }
-
+unclass(emp_status)
 ```
 
 
@@ -97,30 +104,34 @@ output: html_document
 
 ```{r }
 #### Start solution ####
+bank_customers<-data.frame('CustomerID','hasAccount','totalBalance')
 ```
 
 
 ```{r }
-
-```
-
-
-```{r }
-
-```
-
-
-```{r }
+data = data.frame(DATA=c("Alicia does not have an account. She is here for inquiry","Nancy is here to check on her account balance of USD 10000","Fernando is here to deposit USD 100 in his account which had no balance","Louis will withdraw all his money from the account that had USD 2,000","Diane is here for information"))
+row.names(data)<-c("a","b","c","d","e")
 
 ```
 
 
 ```{r }
-
+bank_customers <-data.frame (customerid="na",hasAccount="na",totalBalance="na")
 ```
 
 
 ```{r }
+nrow(bank_customers)
+```
+
+
+```{r }
+ncol(bank_customers)
+```
+
+
+```{r }
+ colnames(bank_customers)
 #### End solution ####
 ```
 
@@ -139,15 +150,50 @@ output: html_document
 
 ```{r }
 #### Start solution ####
+for (x in 1:100) {
+  if ((x %% 2) == 0) 
+  print(x)
+  
+  
+}
+
 ```
 
 
 ```{r }
+i <- 1
+while (i < 6) {
+  print(i)
+  i <- i + 1
+}
 
 ```
 
 
 ```{r }
+i <- 1
+count = 0 
+
+while (i < 40) {
+  
+  i <- i + 1
+
+ 
+  
+  if ((i %% 2) == 0) 
+  {
+		 
+         
+          count <- count + 1
+          if(count == 10)
+          print(i)
+          
+  }
+  
+  
+  
+}
+
 
 ```
 
@@ -182,7 +228,15 @@ output: html_document
 
 
 ```{r }
+x<-matrix(1:6,3,3)
+x
 
+for(i in seq_len(nrow(x)))
+{
+ 	
+	for(j in  seq_len(ncol(x)))
+    print(x[i,j])
+}
 ```
 
 
@@ -227,16 +281,25 @@ output: html_document
 
 
 ```{r }
-
+ainput <- readline(prompt="Enter your NUmber: ")
+binput <- readline(prompt="Enter your Second NUmber: ")
 ```
 
 
 ```{r }
-
+gcd <- function(a, b) {  
+    while(b) {
+        temp = b
+        b = a %% b
+        a = temp
+    }
+    return(a)
+}
 ```
 
 
 ```{r }
+answer <- gcd(ainput,binput)
 
 ```
 
@@ -269,12 +332,19 @@ output: html_document
 
 
 ```{r }
-
+ainput <- readline(prompt="Enter your NUmber: ")
+binput <- readline(prompt="Enter your Second NUmber: ")
 ```
 
 
 ```{r }
-
+allConditionsMeet <- function (ainput,binput){ 
+ 
+  #ainput is first number
+  #binput is second number 
+  val <- ainput<binput
+    
+  }
 ```
 
 
@@ -304,7 +374,7 @@ output: html_document
 ### Question 1
 **Create two matrices matrix_1 and matrix_2 of dimensions 2x3 and 3x2:**  
 1. Perform element-wise multiplication.  
-2. Perform matrix multipilcation.   
+2. Perform matrix multiplication.   
 
 **Create a 2x2 matrix my_mat:**  
 1. Write a function to find the determinant of the matrix.  
@@ -316,17 +386,21 @@ output: html_document
 
 
 ```{r }
-
+x<-matrix(1:6, nrow = 2, ncol = 3)
+y<-matrix(1:6, nrow = 3, ncol = 2)
 ```
 
 
 ```{r }
-
+#non-conformable arrays
+x*y
 ```
 
 
-```{r }
 
+```{r }
+#non-conformable arrays
+x%%y
 ```
 
 
@@ -360,27 +434,29 @@ output: html_document
 
 
 ```{r }
-
+x<-Sys.time()
 ```
 
 
 ```{r }
-
+curr_date<-as.Date(x)
 ```
 
 
 ```{r }
-
+curr_time<-format(Sys.time(), "%a %b %d %X %Y")
 ```
 
 
 ```{r }
-
+p$wday
 ```
 
 
 ```{r }
-
+p$year
+p$sec
+p$hour
 ```
 
 
@@ -400,17 +476,18 @@ output: html_document
 
 
 ```{r }
-
+d1 <- as.POSIXct(Sys.time(), format='%Y-%m-%d %H:%M:%S', tz="GMT")
+d2 <- format(d1,tz="America/New_York")
 ```
 
 
 ```{r }
-
+p<-as.POSIXit(Sys.time())
 ```
 
 
 ```{r }
-
+diff<-d1$hour-p$hour
 ```
 
 
@@ -444,22 +521,26 @@ output: html_document
 
 
 ```{r }
-
+x <- list(a = 100:150, b = rnorm(10))
+lapply(x,mean)
 ```
 
 
 ```{r }
-
+sapply(x, mean) 
 ```
 
 
 ```{r }
-
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10) 
+tapply(x, f, mean, simplify = FALSE)
 ```
 
 
 ```{r }
-
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 2, mean)
 ```
 
 
@@ -484,17 +565,19 @@ output: html_document
 
 
 ```{r }
-
+x <- matrix(1:16,ncol = 4,nrow = 4)
 ```
 
 
 ```{r }
-
+x1 <- rowMeans(x)
+x2 <- colMeans(x)
 ```
 
 
 ```{r }
-
+x1
+x2
 ```
 
 
@@ -542,22 +625,33 @@ head(Orange)
 
 
 ```{r }
-
+split_data<-(Orange$circumference)
 ```
 
 
 ```{r }
-
+split_data[1]
+split_data[15]
+split_data[29]
 ```
 
 
 ```{r }
-
+split_data[17]
 ```
 
 
 ```{r }
-
+require(stats); require(graphics)
+coplot(circumference ~ age | Tree, data = Orange, show.given = FALSE)
+fm1 <- nls(circumference ~ SSlogis(age, Asym, xmid, scal),
+           data = Orange, subset = Tree == 3)
+plot(circumference ~ age, data = Orange, subset = Tree == 3,
+     xlab = "Tree age (days since 1968/12/31)",
+     ylab = "Tree circumference (mm)", las = 1,
+     main = "Orange tree data and fitted model (Tree 3 only)")
+age <- seq(0, 1600, length.out = 101)
+lines(age, predict(fm1, list(age = age)))
 ```
 
 
